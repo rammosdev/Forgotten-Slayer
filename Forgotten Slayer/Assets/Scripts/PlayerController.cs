@@ -25,10 +25,13 @@ public class PlayerController : MonoBehaviour
         Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 LookDir = MousePos - Axis.transform.position;
         float Angle = Mathf.Atan2(LookDir.y, LookDir.x) * Mathf.Rad2Deg - 90f;
-        Axis.GetComponent<Rigidbody2D>().rotation = Angle;
+        //Axis.GetComponent<Rigidbody2D>().rotation = Angle;
+        Axis.transform.rotation = Quaternion.Euler(0,0,Angle);
+
+        
         
         // Vira alguns objetos baseado na rotação
-        if (LookDir.x > 0)
+        if (LookDir.x > transform.position.x)
         {
             Flip = false;
             HandDistance.transform.localRotation = Quaternion.Euler(0, HandDistance.transform.rotation.y, HandDistance.transform.rotation.z);
@@ -63,15 +66,12 @@ public class PlayerController : MonoBehaviour
         // Muda a direção do player baseado em sua velocidade
         if (playerInput.x > 0 || playerInput.y > 0)
         {
-            Debug.Log("Andando Direita");
             Flip = false;
             CreateDust();
         }
         
         if (playerInput.x < 0)
-        {
-            Debug.Log("Andando Esquerda");
-            
+        {           
             Flip = true;
             CreateDust();
         }
