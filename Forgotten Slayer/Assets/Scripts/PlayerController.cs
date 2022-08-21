@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 playerInput;
     public float moveSpeed;
 
+    public float Angle;
+
     public bool Flip;
 
     private void Awake()
@@ -23,22 +25,27 @@ public class PlayerController : MonoBehaviour
     {
         // Calcula a rotação da espada do jogador baseado na posição do mouse
         Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 LookDir = MousePos - Axis.transform.position;
-        float Angle = Mathf.Atan2(LookDir.y, LookDir.x) * Mathf.Rad2Deg - 90f;
-        //Axis.GetComponent<Rigidbody2D>().rotation = Angle;
-        Axis.transform.rotation = Quaternion.Euler(0,0,Angle);
 
+        // Calcula a direção em que o jogador está olhando
+        Vector2 LookDir = MousePos - Axis.transform.position;
+
+        // Calcula o ângulo da espada
+        Angle = Vector2.SignedAngle(Axis.transform.position, MousePos);
         
-        
+        Axis.transform.rotation = Quaternion.Euler(0, 0, Angle);
         // Vira alguns objetos baseado na rotação
-        if (LookDir.x > transform.position.x)
+        
+        // Nota: A condição aqui precisa ser "LookDir.x > 0" e não maior que "transform.position.x", pois o valor retornado é entre -1 e 1. 
+        if (LookDir.x > 0)
         {
             Flip = false;
+            // Axis.transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(Angle, 0, 150));
             HandDistance.transform.localRotation = Quaternion.Euler(0, HandDistance.transform.rotation.y, HandDistance.transform.rotation.z);
         }
         else
         {
             Flip = true;
+            // Axis.transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(Angle, 0, -150));
             HandDistance.transform.localRotation = Quaternion.Euler(180, HandDistance.transform.rotation.y, HandDistance.transform.rotation.z);
         }
     }
@@ -66,13 +73,11 @@ public class PlayerController : MonoBehaviour
         // Muda a direção do player baseado em sua velocidade
         if (playerInput.x > 0 || playerInput.y > 0)
         {
-            Flip = false;
             CreateDust();
         }
         
         if (playerInput.x < 0)
         {           
-            Flip = true;
             CreateDust();
         }
 
