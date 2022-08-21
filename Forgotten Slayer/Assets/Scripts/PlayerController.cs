@@ -4,19 +4,23 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject HandDistance;
     public GameObject Axis;
+    public GameObject Delay;
+    public GameObject Hand;
+    public GameObject Deb;
+    
     public ParticleSystem dust;
     public Rigidbody2D rig;
     public Animator anima;
-    public Vector2 playerInput;
-    public float moveSpeed;
+    public TMPro.TMP_Text DebText;
 
+    public Vector2 playerInput;
+    public Vector2 LookDir;
+
+    public float moveSpeed;
     public float Angle;
 
     public bool Flip;
 
-    public TMPro.TMP_Text DebText;
-
-    public GameObject Deb;
 
     void Update()
     {
@@ -36,6 +40,12 @@ public class PlayerController : MonoBehaviour
 
         DebTxt += "PlayerInput: X: " + playerInput.x.ToString() + " Y:" + playerInput.y.ToString() + "\n";
 
+        DebTxt += "ScreenToWorld-based Angle: " + Vector2.SignedAngle(Camera.main.ScreenToWorldPoint(Axis.transform.position), Camera.main.ScreenToWorldPoint(Input.mousePosition)).ToString() + "\n";
+
+        DebTxt += "WorldToScreen-based Angle: " + Vector2.SignedAngle(Camera.main.WorldToScreenPoint(Axis.transform.position), Camera.main.ScreenToWorldPoint(Input.mousePosition)).ToString() + "\n";
+        
+        DebTxt += "LookDir: " + LookDir + "\n";
+        
         DebText.text = DebTxt;
 
         if (Input.GetKeyDown(KeyCode.F8))
@@ -57,13 +67,15 @@ public class PlayerController : MonoBehaviour
         Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Calcula a direção em que o jogador está olhando
-        Vector2 LookDir = MousePos - Axis.transform.position;
+        LookDir = MousePos - Vector3.zero;
+
 
         // Calcula o ângulo da espada
-        Angle = Vector2.SignedAngle(Axis.transform.position, MousePos);
+        Angle = Vector2.SignedAngle(Axis.transform.position, LookDir);
+        //// Angle = Mathf.Atan2(LookDir.x, LookDir.y) * Mathf.Rad2Deg - 90f;
         
-        Axis.transform.rotation = Quaternion.Euler(0, 0, Angle);
         // Vira alguns objetos baseado na rotação
+        Axis.transform.localRotation = Quaternion.Euler(0, 0, Angle);
         
         // Nota: A condição aqui precisa ser "LookDir.x > 0" e não maior que "transform.position.x", pois o valor retornado é entre -1 e 1. 
         if (LookDir.x > 0)
@@ -114,7 +126,7 @@ public class PlayerController : MonoBehaviour
         // Parado. Só isso.
         else if (playerInput.x == 0 || playerInput.y == 0 )
         {
-            Debug.Log("Parado");
+            // Debug.Log("Parado");
         }
 
     }
@@ -134,6 +146,21 @@ public class PlayerController : MonoBehaviour
         {
             anima.SetInteger("Transition", 0);
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+        Gizmos.DrawSphere(Camera.main.ScreenToWorldPoint(Input.mousePosition), 0.3f);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(Axis.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(HandDistance.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(Delay.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(Hand.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     void CreateDust()
