@@ -14,6 +14,36 @@ public class PlayerController : MonoBehaviour
 
     public bool Flip;
 
+    public TMPro.TMP_Text DebText;
+
+    public GameObject Deb;
+
+    void Update()
+    {
+        string DebTxt = "";
+
+        DebTxt += transform.name + " rotation: " + transform.rotation.ToString() + "\n";
+
+        DebTxt += transform.name + " position: " + transform.rotation.ToString() + "\n";
+
+        DebTxt += Axis.name + " rotation: " + Axis.transform.rotation.ToString() + "\n";
+
+        DebTxt += Axis.name + " position: " + Axis.transform.position.ToString() + "\n";
+
+        DebTxt += "Angle: " + Angle.ToString() + "\n";
+
+        DebTxt += "Flipped: " + Flip.ToString() + "\n";
+
+        DebTxt += "PlayerInput: X: " + playerInput.x.ToString() + " Y:" + playerInput.y.ToString() + "\n";
+
+        DebText.text = DebTxt;
+
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            Deb.SetActive(!Deb.activeSelf);
+        }
+    }
+
     private void Awake()
     {
         // Pega os componentes necessários.
