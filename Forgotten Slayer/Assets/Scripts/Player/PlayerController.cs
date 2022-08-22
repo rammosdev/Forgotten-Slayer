@@ -67,11 +67,10 @@ public class PlayerController : MonoBehaviour
         Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Calcula a direção em que o jogador está olhando
-        LookDir = MousePos - Vector3.zero;
-
+        LookDir = MousePos - Axis.transform.position;
 
         // Calcula o ângulo da espada
-        Angle = Vector2.SignedAngle(Axis.transform.position, LookDir);
+        Angle = Vector2.SignedAngle(Axis.transform.localPosition, LookDir);
         //// Angle = Mathf.Atan2(LookDir.x, LookDir.y) * Mathf.Rad2Deg - 90f;
         
         // Vira alguns objetos baseado na rotação
@@ -82,13 +81,13 @@ public class PlayerController : MonoBehaviour
         {
             Flip = false;
             // Axis.transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(Angle, 0, 150));
-            HandDistance.transform.localRotation = Quaternion.Euler(0, HandDistance.transform.rotation.y, HandDistance.transform.rotation.z);
+            HandDistance.transform.localRotation = Quaternion.Euler(0, HandDistance.transform.localRotation.y, HandDistance.transform.localRotation.z);
         }
         else
         {
             Flip = true;
             // Axis.transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(Angle, 0, -150));
-            HandDistance.transform.localRotation = Quaternion.Euler(180, HandDistance.transform.rotation.y, HandDistance.transform.rotation.z);
+            HandDistance.transform.localRotation = Quaternion.Euler(180, HandDistance.transform.localRotation.y, HandDistance.transform.localRotation.z);
         }
     }
 
