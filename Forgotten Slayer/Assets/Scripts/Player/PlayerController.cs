@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    /*void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)));
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(Delay.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(Hand.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-    }
+    }*/
 
     void CreateDust()
     {
