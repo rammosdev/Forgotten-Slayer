@@ -11520,15 +11520,16 @@ MonoBehaviour:
   Delay: {fileID: 1484731806}
   Hand: {fileID: 1985526135}
   Deb: {fileID: 184433300}
-  dust: {fileID: 0}
+  Angle: 0
+  Flip: 0
+  LookDir: {x: 0, y: 0}
   rig: {fileID: 0}
   anima: {fileID: 0}
   DebText: {fileID: 942066001}
   playerInput: {x: 0, y: 0}
-  LookDir: {x: 0, y: 0}
   moveSpeed: 5
-  Angle: 0
-  Flip: 0
+  dust: {fileID: 0}
+  health: 3
 --- !u!61 &1596430558
 BoxCollider2D:
   m_ObjectHideFlags: 0

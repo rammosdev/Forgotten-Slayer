@@ -2,24 +2,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Mira")]
     public GameObject HandDistance;
     public GameObject Axis;
     public GameObject Delay;
     public GameObject Hand;
     public GameObject Deb;
-    
-    public ParticleSystem dust;
+    public float Angle;
+    public bool Flip;
+    public Vector2 LookDir;
     public Rigidbody2D rig;
     public Animator anima;
     public TMPro.TMP_Text DebText;
-
+    [Header("Movimentação")]
     public Vector2 playerInput;
-    public Vector2 LookDir;
-
     public float moveSpeed;
-    public float Angle;
+    public ParticleSystem dust;
+    [Header("Vida")]
+    public int health = 3;
 
-    public bool Flip;
 
 
     void Update()
