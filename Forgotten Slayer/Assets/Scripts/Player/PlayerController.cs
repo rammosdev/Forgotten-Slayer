@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
     public Vector2 playerInput;
     public float moveSpeed;
     public ParticleSystem dust;
-    [Header("Vida")]
-    public int health = 3;
 
 
 
@@ -115,12 +113,12 @@ public class PlayerController : MonoBehaviour
         // Muda a direção do player baseado em sua velocidade
         if (playerInput.x > 0 || playerInput.y > 0)
         {
-            CreateDust();
+            
         }
         
         if (playerInput.x < 0)
         {           
-            CreateDust();
+            
         }
 
         // Parado. Só isso.
@@ -147,7 +145,6 @@ public class PlayerController : MonoBehaviour
             anima.SetInteger("Transition", 0);
         }
     }
-
     /*void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -162,9 +159,5 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(Hand.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }*/
-
-    void CreateDust()
-    {
-        //dust.Play();
-    }
+    
 }
