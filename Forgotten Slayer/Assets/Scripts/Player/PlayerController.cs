@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 playerInput;
     public float moveSpeed;
     public ParticleSystem dust;
-    public HealthController hp;
+    public HealthController playerHealth;
 
 
 
@@ -100,6 +100,12 @@ public class PlayerController : MonoBehaviour
 
         // Vira o jogador horizontalmente baseado em certas circunstâncias
         GetComponent<SpriteRenderer>().flipX = Flip;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TakeDamage(1);
+            Debug.Log(playerHealth.currentHealth);
+        }
     }
 
     // Movimento
@@ -132,7 +138,14 @@ public class PlayerController : MonoBehaviour
 
     void TakeDamage(int damage)
     {
-        hp.health -= damage;
+        playerHealth.currentHealth -= damage;
+        if (playerHealth.currentHealth > 0)
+        {
+            //Player toma dano
+        }else
+        {
+            //Player morre
+        }
     }
     // Animação
     void Animation()

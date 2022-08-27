@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
-    public int health;
+    public int currentHealth;
+    public int maxHealth;
     public int numOfHearts;
 
     public Image[] hearts;
@@ -14,21 +15,21 @@ public class HealthController : MonoBehaviour
     
     void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (health > numOfHearts)
+        if (maxHealth > numOfHearts)
         {
-            health = numOfHearts;
+            maxHealth = numOfHearts;
         }
 
         for(int i = 0; i < hearts.Length; i++)
         {
-            if (i < health)
+            if (i < maxHealth)
             {
                 hearts[i].sprite = fullHeart;
             }else
