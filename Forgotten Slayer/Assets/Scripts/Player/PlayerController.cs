@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 playerInput;
     public float moveSpeed;
     public ParticleSystem dust;
+    public HealthController hp;
 
 
 
@@ -129,6 +130,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void TakeDamage(int damage)
+    {
+        hp.health -= damage;
+    }
     // Animação
     void Animation()
     {

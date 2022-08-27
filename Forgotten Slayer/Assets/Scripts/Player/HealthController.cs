@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
-    public float currentHealth {get; private set;}
-    [SerializeField] public float health;
-    
+    public int health;
+    public int numOfHearts;
 
-    private void Awake() {
-        currentHealth = health;
-    }
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+    
     void Start()
     {
         
@@ -20,23 +20,31 @@ public class HealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+
+        if (health > numOfHearts)
         {
-            TakeDamage(1);
+            health = numOfHearts;
+        }
+
+        for(int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            }else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if(i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }else
+            {
+                hearts[i].enabled = false;
+            }
         }
     }
 
-    public void TakeDamage(float damage)
-    {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, health);
-        currentHealth -= damage;
 
-        if (currentHealth > 0)
-        {
-            //Dano contra o player
-        }else
-        {
-            //Morte do player
-        }
-    }
 }

@@ -44,3 +44,6 @@ TagManager:
   - name: Player
     uniqueID: 3126630997
     locked: 0
+  - name: "Decora\xE7\xF5es"
+    uniqueID: 2423173241
+    locked: 0
