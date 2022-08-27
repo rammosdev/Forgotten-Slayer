@@ -101,15 +101,15 @@ public class PlayerController : MonoBehaviour
         // Vira o jogador horizontalmente baseado em certas circunstâncias
         GetComponent<SpriteRenderer>().flipX = Flip;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButton(0))
         {
-            TakeDamage(1);
+            playerHealth.TakeDamage(1);
             Debug.Log(playerHealth.currentHealth);
         }
     }
 
     // Movimento
-    void Movimento()
+    public void Movimento()
     {
         // Define a direção de movimento baseado nas teclas pressionadas.
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -134,18 +134,6 @@ public class PlayerController : MonoBehaviour
             // Debug.Log("Parado");
         }
 
-    }
-
-    void TakeDamage(int damage)
-    {
-        playerHealth.currentHealth -= damage;
-        if (playerHealth.currentHealth > 0)
-        {
-            //Player toma dano
-        }else
-        {
-            //Player morre
-        }
     }
     // Animação
     void Animation()
@@ -178,4 +166,10 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(Hand.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }*/
     
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.collider.CompareTag("Escadas"))
+        {
+            Debug.Log("Escadas");
+        }
+    }
 }
