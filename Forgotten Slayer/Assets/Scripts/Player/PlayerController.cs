@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public ParticleSystem dust;
     public HealthController playerHealth;
+    [Header("Ataque")]
+    [SerializeField] private Animator swordAnima;
+    public Transform attackPoint;
+    public float attackRange;
+    public LayerMask enemyLayer;
 
 
 
@@ -59,6 +64,7 @@ public class PlayerController : MonoBehaviour
         // Pega os componentes necessários.
         rig = GetComponent<Rigidbody2D>();
         anima = GetComponent<Animator>();
+        swordAnima = GetComponentInChildren<Animator>();
     }
 
     private void MouseLook()
@@ -97,15 +103,10 @@ public class PlayerController : MonoBehaviour
         MouseLook();
         Movimento();
         Animation();
+        Attack();
 
         // Vira o jogador horizontalmente baseado em certas circunstâncias
-        GetComponent<SpriteRenderer>().flipX = Flip;
-
-        if (Input.GetMouseButton(0))
-        {
-            playerHealth.TakeDamage(1);
-            Debug.Log(playerHealth.currentHealth);
-        }
+        GetComponent<SpriteRenderer>().flipX = Flip;    
     }
 
     // Movimento
@@ -166,6 +167,30 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(Hand.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }*/
     
+    public void Attack()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            swordAnima.SetInteger("Transition", 1);
+            //Detectando inimigos
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+            //Dando dano
+            foreach(Collider2D enemy in hitEnemies)
+            {
+                Debug.Log("Acertei" + enemy.name);
+            }
+
+            Debug.Log("Atacando");
+        }
+    }
+
+    private void OnDrawGizmosSelected() {
+
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.collider.CompareTag("Escadas"))
         {

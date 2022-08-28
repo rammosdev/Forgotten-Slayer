@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1a6041d640197684b9e2b77b1891e291
+guid: 00203d6484a272e478557cdc534c6248
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -102,112 +102,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: machete_ [iron]_0
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 38
-        width: 5
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2782d5a0afc9a141b690ed97f7b1206
-      internalID: -299739715
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: machete_ [iron]_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 6
-        width: 19
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 216bb84d1c6d8a745a80cfd60c8cbb6b
-      internalID: -259723198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: machete_ [iron]_2
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 6
-        width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f7e57c316d48e346b168c82bd8028ef
-      internalID: 19674931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: machete_ [iron]_3
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 6
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f3d4c94518e8fe4dafa411f30abf993
-      internalID: -1641407945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: machete_ [iron]_4
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 6
-        width: 11
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0322822269277e8498e309accdff7e47
-      internalID: 13047719
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -218,12 +113,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      machete_ [iron]_1: -259723198
-      machete_ [iron]_0: -299739715
-      machete_ [iron]_4: 13047719
-      machete_ [iron]_2: 19674931
-      machete_ [iron]_3: -1641407945
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
