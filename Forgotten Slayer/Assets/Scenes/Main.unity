@@ -13896,6 +13896,7 @@ MonoBehaviour:
   moveSpeed: 5
   dust: {fileID: 0}
   playerHealth: {fileID: 1596430563}
+  playerAttack: {fileID: 1985526138}
 --- !u!61 &1596430558
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14642,6 +14643,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   slash: {fileID: 7253185267851142086, guid: 74328df2f552d894f84328e3488ca521, type: 3}
+  handDistance: {fileID: 2007006952}
+  playerController: {fileID: 0}
+  Flip: 0
 --- !u!95 &1985526139
 Animator:
   serializedVersion: 4

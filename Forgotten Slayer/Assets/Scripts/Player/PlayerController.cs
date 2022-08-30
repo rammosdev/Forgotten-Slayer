@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public ParticleSystem dust;
     public HealthController playerHealth;
+    public AttackController playerAttack;
 
 
     void Update()
@@ -81,12 +82,14 @@ public class PlayerController : MonoBehaviour
             Flip = false;
             // Axis.transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(Angle, 0, 150));
             HandDistance.transform.localRotation = Quaternion.Euler(0, HandDistance.transform.localRotation.y, HandDistance.transform.localRotation.z);
+            playerAttack.Attack();
         }
         else
         {
             Flip = true;
             // Axis.transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(Angle, 0, -150));
             HandDistance.transform.localRotation = Quaternion.Euler(180, HandDistance.transform.localRotation.y, HandDistance.transform.localRotation.z);
+            playerAttack.Attack();
         }
     }
 
